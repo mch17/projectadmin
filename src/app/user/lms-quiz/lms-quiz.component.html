@@ -1,0 +1,142 @@
+<app-header> </app-header>
+
+<div class="row">
+  <div class="col-md-6">
+    <h3>Quiz Application</h3>
+  </div>
+
+</div>
+
+
+<div id="quiz">
+
+
+
+
+  <div *ngIf="mode=='quiz' && quiz">
+
+
+
+    <!--<div class="row review">
+      <div class="col-sm-1" *ngFor="let question of quiz.questions; let index = index;">
+        <div (click)="goTo(index)" class="{{ isAnswered(question) == 'Answered'? 'answered': 'not-answered' }}">{{index + 1}}</div>
+      </div>
+    </div>-->
+
+
+
+    <div *ngFor="let question of filteredQuestions;">
+      <div class="badge">Question {{pager.index + 1}} of    {{pager.count}}.</div>
+      <h2>{{pager.index + 1}}. <span [innerHTML]="question.name"></span></h2>
+      <div class="row text-left options">
+        <div class="col-md-6" *ngFor="let option of question.options">
+          <div >
+            <label class="" [attr.for]="option.id">
+                <input id="{{option.id}}" type="checkbox" [(ngModel)]="option.selected" (change)="onSelect(question, option);" />
+                {{option.name}}
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+    <hr />
+    <div class="text-sm-center">
+      <button class="btn btn-danger" *ngIf="config.allowBack" (click)="goTo(0);">First</button>
+      <button class="btn btn-default" *ngIf="config.allowBack" (click)="goTo(pager.index - 1);">Prev</button>
+      <button class="btn btn-primary" (click)="goTo(pager.index + 1);">Next</button>
+      <button class="btn btn-info" *ngIf="config.allowBack" (click)="goTo(pager.count - 1);">Last</button>
+      <!--<pagination *ngIf="config.showPager" direction-links="false" total-items="totalItems" items-per-page="itemsPerPage" ng-model="currentPage" ng-change="pageChanged()"></pagination>-->
+    </div>
+
+    <br/>
+    <br/>
+    <br/>
+    <!--<div class="row review">
+      <div class="col-md-1" *ngFor="let question of quiz.questions; let index = index;">
+        <div (click)="goTo(index)" class="{{ isAnswered(question) == 'Answered'? 'answered': 'not-answered' }}">{{index + 1}}</div>
+      </div>
+    </div>-->
+
+    <div *ngFor="let question of quiz.questions; let index = index;" class="btn-group" role="group" aria-label="...">
+      <button  class="btn btn-info" (click)="goTo(index)" class="{{ isAnswered(question) == 'Answered'? 'btn btn-primary': 'btn btn-default' }}" type="button">
+         Q{{index + 1}}   
+     </button>
+
+    </div>
+  </div>
+
+
+  <div class="row review" *ngIf="mode=='review'">
+    <div class="col-sm-4" *ngFor="let question of quiz.questions; let index = index;">
+      <div (click)="goTo(index)" class="{{ isAnswered(question) == 'Answered'? 'answered': 'not-answered' }}">{{index + 1}}</div>
+    </div>
+  </div>
+  <div class="result" *ngIf="mode=='result'">
+    <h2>Quiz Result  {{ this.res}}++++++++{{pager.count}}</h2>
+
+
+
+
+
+
+
+
+
+
+
+    <hr>
+    <div *ngFor="let question of quiz.questions; let index = index">
+      <div class="result-question">
+        <h4>{{index + 1}}. {{question.name}}</h4>
+        <div class="row">
+          <div class="col-md-6" *ngFor="let Option of question.options">
+            <input id="{{Option.id}}" type="checkbox" disabled="disabled" [(ngModel)]="Option.selected" /> {{Option.name}}
+          </div>
+        </div>
+        <div class="alert {{ isCorrect(question) == 'correct'? 'alert-success': 'alert-danger'}}">Your answer is {{isCorrect(question)}}.</div>
+      </div>
+    </div>
+  </div>
+  <hr />
+  <div *ngIf="mode!='result'">
+    <button class="btn btn-primary" (click)="mode = 'quiz'">Quiz</button>
+    <button class="btn btn-success" (click)="onTrackAnswers();">Review</button>
+    <button class="btn btn-danger" (click)="onSubmit();">Submit Quiz</button>
+  </div>
+</div>
+
+
+
+
+<div class="row"   *ngIf="mode=='track'">
+  <div class="col-md-7">
+    <div style="display: block;">
+      <canvas baseChart width="400" height="400"
+        [datasets]="lineChartData"
+        [labels]="lineChartLabels" 
+        [options]="lineChartOptions"
+        [colors]="lineChartColors" 
+        [legend]="lineChartLegend"
+        [chartType]="lineChartType" 
+        (chartHover)="chartHovered($event)"
+        (chartClick)="chartClicked($event)"></canvas>
+    </div>
+  </div>
+  <!--<div class="col-md-6" style="margin-bottom: 10px">
+    <table class="table table-responsive table-condensed">
+      <tr>
+        <th *ngFor="let label of lineChartLabels">{{label}}</th>
+      </tr>
+      <tr *ngFor="let d of lineChartData">
+        <td *ngFor="let label of lineChartLabels; let j=index">{{d && d.data[j]}}</td>
+      </tr>
+    </table>
+
+  </div>-->
+</div>
+<div>
+
+  <p>The time is {{today | date:'mediumTime'}}</p>
+
+
+</div>

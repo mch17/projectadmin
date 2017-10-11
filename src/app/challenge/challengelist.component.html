@@ -1,0 +1,54 @@
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th><span>ID</span> <span class="fa fa-sort"></span></th>
+      <th><span>Nom</span> <span class="fa fa-sort"></span></th>
+      <th><span>Difficulté</span> <span class="fa fa-sort"></span></th>
+      <th><span>nbParticipants</span> <span class="fa fa-sort"></span></th>
+      <th><span>Date</span> <span class="fa fa-sort"></span></th>
+
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+
+    <tr *ngFor="let challenge of challenges| paginate: { itemsPerPage: 8, currentPage: p }">
+      <td>
+        <a >{{challenge.id}}</a>
+      </td>
+     
+       <td>
+        {{challenge.name}}
+      </td>
+      
+       <td>
+        {{challenge.difficulty}}
+      </td>
+        <td>
+        {{challenge.nbParticipants}}
+      </td>
+      
+      <td>
+      
+
+              {{challenge.dateChallenge | date: 'dd'}}
+              /{{challenge.dateChallenge | date:'MM'}}/{{challenge.dateChallenge | date: 'yyyy'}} 
+
+              
+    {{challenge.dateChallenge | date: 'shortTime'}}
+  
+      </td>
+      
+
+     
+
+    </tr>
+  </tbody>
+</table>
+
+
+
+<div class="text-center">
+  <ngb-pagination [collectionSize]="40" [(page)]="p" [boundaryLinks]="true"></ngb-pagination>
+</div>

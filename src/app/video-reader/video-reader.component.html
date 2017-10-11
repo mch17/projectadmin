@@ -1,0 +1,24 @@
+<p>
+  video-reader works!
+</p>
+
+<div>
+  <video class="vid" style="width:680px" id="mp" (loadedmetadata)="processMetaData(movieplayer)" #movieplayer (timeupdate)="updateDisplayTime(movieplayer)"
+    (mouseenter)="hideControl(false)" (mouseout)="hideControl(true)">
+    <source src="http://localhost:8080/api/allsupportcours/17" />
+  </video>
+  <div [hidden]="hidectrl" style="position:relative;top:-50px;left:5px" (mouseenter)="hideControl(false)" (mouseout)="hideControl(true)">
+    <input [hidden]="!movieLoaded" class="slider" type="range" min="0" style="width:620px" max="{{movieplayer.duration}}" id="myRange"
+      [(ngModel)]="currentTimeRange" (input)="seek($event,movieplayer)">
+    <div></div>
+
+    <button (click)="onPlayPause(movieplayer)"><img style="width:16px;" src={{playpauseimg}}></button>
+    <button (click)=" onMuteUnmute(movieplayer)">
+      <img  style="width:16px;" src={{volumeMuteImg}}></button>
+    <button (click)="makeFullScreen(movieplayer)"><img   style="width:16px;" src="/assets/video/fullscreen.svg"></button>
+    <button> <span style="color:balck">{{currTime}} / {{videoDuration}}</span> </button>
+
+    <input #volumerange class="volslider" style="width:80px" type="range" min="1" max="10" [(ngModel)]="volume" (input)="seekVolume($event,movieplayer)">
+
+  </div>
+</div>

@@ -1,0 +1,117 @@
+<h1> Créer un Quiz</h1>
+
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm" *ngIf="quiz">
+
+  <div class="modal-header">
+
+  </div>
+  <div class="modal-body">
+
+    <div class="form-group">
+      <label class="form-control-label" for="field_name">Nom </label>
+      <input type="text" class="form-control" #NomInput="ngModel" minlength=3 required name="name" id="field_name" [(ngModel)]="quiz.name"
+      />
+
+
+      <small [hidden]="NomInput.valid || (NomInput.pristine && !editForm.submitted)" class="text-danger">
+            Nom du quiz est un champs obligatoire  (minimum 3 caractères).
+          </small>
+
+
+
+    </div>
+    <div class="form-group">
+      <label class="form-control-label" for="field_description">Description</label>
+      <input type="text" class="form-control" #descriptionInput="ngModel" minlength=7 name="description" id="field_name" [(ngModel)]="quiz.description"
+      />
+
+      <small [hidden]="descriptionInput.valid || (descriptionInput.pristine && !editForm.submitted)" class="text-danger">
+           Description est un champs obligatoire  (minimum 7 caractères).
+          </small>
+    </div>
+
+
+    <div class="form-group">
+
+      <label class="form-control-label" for="field_level">Difficulté </label>
+      <input type="number" class="form-control" required name="durantion" id="field_durantion" [(ngModel)]="quiz.difficulty" />
+    </div>
+    <label class="form-control-label" for="field_level">Cours Associé  </label>
+
+    <select class="form-control" name="category" id="field_category" [(ngModel)]="quiz.coursF">
+                          <option *ngFor="let cours of courses"    [value]="cours.id" >{{cours.title}}</option>
+
+
+      </select>
+
+
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-default" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span>Cancel</span>
+        </button>
+
+    <button type="submit" [disabled]="!editForm.form.valid" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span>Save</span>
+        </button>
+  </div>
+</form>
+
+
+
+
+
+
+<div class="row">
+</div>
+<br/>
+<div class="table-responsive">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th><span>ID</span> <span class="fa fa-sort"></span></th>
+        <th><span>Nom</span> <span class="fa fa-sort"></span></th>
+        <th><span>Description</span> <span class="fa fa-sort"></span></th>
+        <th><span>Difficulté</span> <span class="fa fa-sort"></span></th>
+        <th><span>Cours Associé</span> <span class="fa fa-sort"></span></th>
+
+      </tr>
+    </thead>
+
+    <tbody>
+
+      <tr *ngFor="let quiz of quizs">
+        <td>
+          <a [routerLink]="['../quiz/question', quiz.id ]">{{quiz.id}}</a>
+        </td>
+        <td>{{quiz.name}}</td>
+        <td>{{quiz.description}}</td>
+        <td>{{quiz.difficulty}}</td>
+        <div *ngIf="quiz.coursT">
+          <td> {{quiz.coursT.title}}</td>
+        </div>
+
+
+
+        <td class="text-right">
+          <div class="btn-group flex-btn-group-container">
+            <button [routerLink]="['../quiz/question', quiz.id ]" type="submit" class="btn btn-danger btn-sm">
+                          
+                            <span class="hidden-md-down">Ajouter Questions    </span>
+                              <span class="glyphicon glyphicon-question-sign"></span>
+                        </button>
+
+            <!--<button type="submit" replaceUrl="true" class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="hidden-md-down">Edit</span>
+                        </button>
+            <button type="submit" replaceUrl="true" class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="hidden-md-down">Delete</span>
+                        </button>-->
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,10 @@
+<p>
+  pdf-reader works!
+</p>
+<div>
+
+  <div>
+    <label>Page:</label>
+    <input type="text" placeholder="Page" [(ngModel)]="page">
+  </div>
+  <pdf-viewer [show-all]="true" [zoom]="1.5" [src]="pdfSrc" [page]="page" [original-size]="true" style="display: block;"></pdf-viewer>

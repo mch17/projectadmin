@@ -1,0 +1,238 @@
+<div *ngFor="let cours of courses">{{cours.id}}</div>
+
+
+
+
+  <div class="gt_content_wrap">
+    <!--Course Grid Wrap Start-->
+    <section class="gt_courses_bg">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-9">
+            <div class="row">
+              <div *ngFor="let cours of courses">
+                <div class="col-md-6 col-sm-6 mb30">
+                  <div class="gt_courses_wrap default_width">
+                    <figure>
+                      <figcaption class="gt_course_img_des">
+                        <div class="gt_course_des_holder">
+
+                          <ul class="gt_rating_star">
+                            <li>
+                              <a href="#"><i class="fa fa-star"></i></a>
+                              <a href="#"><i class="fa fa-star"></i></a>
+                              <a href="#"><i class="fa fa-star"></i></a>
+                              <a href="#"><i class="fa fa-star"></i></a>
+                              <a href="#"><i class="fa fa-star"></i></a>
+                            </li>
+                          </ul>
+                        </div>
+                        <div class="gt_course_cat gt_bg_4">New</div>
+                      </figcaption>
+                    </figure>
+                    <div class="gt_course_des default_width">
+                      <span>Start Date June 28, 2016</span>
+                      <h5><a href="#">{{cours.title}}</a></h5>
+                      <p>  {{cours.aboutTheCours}} </p>
+                    </div>
+                    <div class="gt_course_bottom default_width">
+
+                      <a [routerLink]="['../lmscours', cours.id ]">Lire ce cours</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+
+
+
+            <!--Pagination Wrap Start-->
+            <div class="gt_pagination_outer_wrap">
+              <ul>
+                <li><a href="#"><i class="fa fa-angle-double-left"></i></a></li>
+                <li class="active"><a href="#">1</a></li>
+                <li><a href="#">2</a></li>
+                <li><a href="#">3</a></li>
+                <li><a href="#"><i class="fa fa-angle-double-right"></i></a></li>
+              </ul>
+            </div>
+            <!--Pagination Wrap End-->
+          </div>
+          <!--Aside Bar Wrap Start-->
+          <aside class="col-md-3">
+            <div class="gt_resp_margn default_width">
+              <!--Aside Form Wrap Start-->
+              <div class="gt_aside_hdg default_width mb30">
+                <h6>Find Your Courses</h6>
+                <i class="fa fa-minus"></i>
+                <form>
+                  <div class="gt_aside_field">
+                    <input type="text" placeholder="Enter Keyword">
+                    <i class="fa fa-search"></i>
+                  </div>
+                  <div class="gt_aside_field">
+                    <select class="find_course_search">
+                          <option>Select categories</option>
+                          <option>2</option>
+                          <option>3</option>
+                          <option>4</option>
+                        </select>
+                  </div>
+                  <div class="gt_aside_field">
+                    <button>Search Now<i class="fa fa-search"></i></button>
+                  </div>
+                </form>
+              </div>
+              <!--Aside Form Wrap End-->
+              <!--Aside Courses Type Wrap Start-->
+              <div class="gt_aside_hdg default_width mb30">
+                <h6>Courses Types</h6>
+                <i class="fa fa-minus"></i>
+                <ul class="gt_checkbox_list">
+                  <li>
+                    <input id="checknox1" type="checkbox">
+                    <label for="checknox1"><span></span>All Courses</label>
+                  </li>
+                  <li>
+                    <input id="checknox2" type="checkbox">
+                    <label for="checknox2"><span></span>Skill based</label>
+                  </li>
+                  <li>
+                    <input id="checknox3" type="checkbox">
+                    <label for="checknox3"><span></span>Open Courses</label>
+                  </li>
+                  <li>
+                    <input id="checknox4" type="checkbox">
+                    <label for="checknox4"><span></span>Unveristy Courses</label>
+                  </li>
+                  <li>
+                    <input id="checknox5" type="checkbox">
+                    <label for="checknox5"><span></span>Lectures</label>
+                  </li>
+                  <li>
+                    <input id="checknox6" type="checkbox">
+                    <label for="checknox6"><span></span>E-book</label>
+                  </li>
+                </ul>
+              </div>
+              <!--Aside Courses Type Wrap End-->
+              <!--Aside Price Range Wrap Start-->
+              <div class="gt_aside_hdg default_width mb30">
+                <h6>Price Range</h6>
+                <i class="fa fa-minus"></i>
+                <ul class="gt_checkbox_list">
+                  <li>
+                    <input id="checknox7" type="checkbox">
+                    <label for="checknox7"><span></span>Free</label>
+                  </li>
+                  <li>
+                    <input id="checknox8" type="checkbox">
+                    <label for="checknox8"><span></span>Any Price</label>
+                  </li>
+                  <li>
+                    <input id="checknox9" type="checkbox">
+                    <label for="checknox9"><span></span>Under $60</label>
+                  </li>
+                  <li>
+                    <input id="checknox10" type="checkbox">
+                    <label for="checknox10"><span></span>Under $100</label>
+                  </li>
+                  <li>
+                    <input id="checknox11" type="checkbox">
+                    <label for="checknox11"><span></span>Under $200</label>
+                  </li>
+                  <li>
+                    <input id="checknox12" type="checkbox">
+                    <label for="checknox12"><span></span>Under $300</label>
+                  </li>
+                </ul>
+              </div>
+              <!--Aside Price Range Wrap End-->
+              <!--Aside Degree Level Wrap Start-->
+              <div class="gt_aside_hdg default_width mb30">
+                <h6>Degree Level</h6>
+                <i class="fa fa-minus"></i>
+                <ul class="gt_checkbox_list">
+                  <li>
+                    <input id="checknox13" type="checkbox">
+                    <label for="checknox13"><span></span>Introductory</label>
+                  </li>
+                  <li>
+                    <input id="checknox14" type="checkbox">
+                    <label for="checknox14"><span></span>Intermediate</label>
+                  </li>
+                  <li>
+                    <input id="checknox15" type="checkbox">
+                    <label for="checknox15"><span></span>Advanced</label>
+                  </li>
+                  <li>
+                    <input id="checknox16" type="checkbox">
+                    <label for="checknox16"><span></span>Graduate</label>
+                  </li>
+                  <li>
+                    <input id="checknox17" type="checkbox">
+                    <label for="checknox17"><span></span>Post Graduate</label>
+                  </li>
+                  <li>
+                    <input id="checknox18" type="checkbox">
+                    <label for="checknox18"><span></span>M.phill</label>
+                  </li>
+                  <li>
+                    <input id="checknox19" type="checkbox">
+                    <label for="checknox19"><span></span>PHD</label>
+                  </li>
+                </ul>
+              </div>
+              <!--Aside Degree Level Wrap End-->
+              <!--Aside Instructional Level Wrap Start-->
+              <div class="gt_aside_hdg default_width mb30">
+                <h6>Instructional Level</h6>
+                <i class="fa fa-minus"></i>
+                <ul class="gt_checkbox_list">
+                  <li>
+                    <input id="checknox20" type="checkbox">
+                    <label for="checknox20"><span></span>Introductory</label>
+                  </li>
+                  <li>
+                    <input id="checknox21" type="checkbox">
+                    <label for="checknox21"><span></span>Intermediate</label>
+                  </li>
+                  <li>
+                    <input id="checknox22" type="checkbox">
+                    <label for="checknox22"><span></span>Advanced</label>
+                  </li>
+                  <li>
+                    <input id="checknox23" type="checkbox">
+                    <label for="checknox23"><span></span>Graduate</label>
+                  </li>
+                  <li>
+                    <input id="checknox24" type="checkbox">
+                    <label for="checknox24"><span></span>Post Graduate</label>
+                  </li>
+                  <li>
+                    <input id="checknox25" type="checkbox">
+                    <label for="checknox25"><span></span>M.phill</label>
+                  </li>
+                  <li>
+                    <input id="checknox26" type="checkbox">
+                    <label for="checknox26"><span></span>PHD</label>
+                  </li>
+                </ul>
+              </div>
+              <!--Aside Instructional Level Wrap End-->
+              <!--Aside Feature Courses Wrap Start-->
+              <div class="gt_aside_hdg default_width mb30">
+            
+              </div>
+              <!--Aside Feature Courses Wrap End-->
+            </div>
+          </aside>
+          <!--Aside Bar Wrap End-->
+        </div>
+      </div>
+    </section>
+    <!--Course Grid Wrap End-->
+  </div>
+  <!--Main Content Wrap End-->

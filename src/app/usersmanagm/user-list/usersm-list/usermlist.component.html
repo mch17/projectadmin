@@ -1,0 +1,47 @@
+<div class="row">
+</div>
+<br/>
+<div class="table-responsive">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th><span>ID</span> <span class="fa fa-sort"></span></th>
+        <th><span>Login</span> <span class="fa fa-sort"></span></th>
+        <th><span>Email</span> <span class="fa fa-sort"></span></th>
+        <th><span>Profiles</span> <span class="fa fa-sort"></span></th>
+
+      </tr>
+    </thead>
+
+    <tbody>
+
+      <tr *ngFor="let user of users">
+          <td>
+          <a [routerLink]="['/userml', user.login ]">{{user.id}}</a>
+
+      
+        </td>
+        <td>{{user.login}}</td>
+        <td>{{user.email}}</td>
+        <td> {{user.authorities}}</td>
+
+        <td class="text-right">
+          <div class="btn-group flex-btn-group-container">
+            <button type="submit" class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="hidden-md-down">View</span>
+                        </button>
+            <button type="submit" replaceUrl="true" class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="hidden-md-down">Edit</span>
+                        </button>
+            <button type="submit" replaceUrl="true" class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="hidden-md-down">Delete</span>
+                        </button>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+
+  </table>
